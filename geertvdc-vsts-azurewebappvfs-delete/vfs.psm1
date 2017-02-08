@@ -1,7 +1,3 @@
-Trace-VstsEnteringInvocation $MyInvocation
-
-$fileUrl = Get-VstsInput -Name fileUrl -Require
-$sitecoreUrl = Get-VstsInput -Name sitecoreUrl -Require
 
 
 function Get-AzureRmWebAppPublishingCredentials($resourceGroupName, $webAppName, $slotName = $null){
