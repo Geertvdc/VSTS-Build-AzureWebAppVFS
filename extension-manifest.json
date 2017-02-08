@@ -1,0 +1,75 @@
+{
+  "manifestVersion": 1,
+  "id": "GeertvanderCruijsen-Vsts-Release-AzureWebAppVFS",
+  "name": "Azure WebApp Virtual File System Tasks",
+  "version": "0.0.1",
+  "publisher": "geertvdcruijsen",
+  "public": true,
+  "galleryFlags": [
+      "Preview"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Put, Get or Delete files from Azure Web Apps through KUDU Virtual File System Rest API",
+  "categories": [
+    "Build and release"
+  ],
+  "tags": [
+    "Kudu",
+    "Azure",
+    "VFS",
+    "File",
+    "Virtual File System",
+    "WebApp",
+    "App Service"
+  ],
+  "screenshots": [
+    {
+       "path": "geertvdc.vsts.azurewebappvfs.extension/images/1.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "geertvdc.vsts.azurewebappvfs.extension/readme.md"
+    },
+    "license": {
+      "path": "geertvdc.vsts.azurewebappvfs.extension/license.txt"
+    }
+  },
+  "links": {
+    "getstarted": {
+      "uri": "http://mobilefirstcloudfirst.net"
+    },
+    "support": {
+      "uri": "https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS"
+    }
+  },
+  "branding": {
+    "color": "rgb(255, 255, 255)",
+    "theme": "light"
+  },
+  "icons": {
+    "default": "geertvdc.vsts.azurewebappvfs.extension/images/icon-large.png"
+  },
+  "files": [
+    {
+      "path": "geertvdc-vsts-azurewebappvfs-delete"
+    }
+  ],
+
+  "contributions": [
+    {
+      "id": "geertvdc-vsts-azurewebappvfs-delete",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "geertvdc-vsts-azurewebappvfs-delete"
+      }
+    }
+  ]
+}

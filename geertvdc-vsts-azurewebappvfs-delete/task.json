@@ -1,0 +1,73 @@
+{
+    "id": "25104ad4-8a3e-4543-9405-419adbe1b2fd",
+    "name": "WebAppVFSDelete",
+    "friendlyName": "Delete Item from Azure Web App",
+    "description": "Delete Item from Azure Web App through Kudu VFS Rest API",
+    "helpMarkDown": "Version: 0.1. [More Information](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)",
+    "category": "Utility",
+    "author": "Geert van der Cruijsen",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 4
+    },
+    "visibility": [
+      "Build",
+      "Release"
+    ],
+    "demands": [ ],
+    "minimumAgentVersion": "1.90.0",
+    "groups": [
+    ],
+    "inputs": [
+        {
+            "name": "ConnectedServiceName",
+            "type": "connectedService:AzureRM",
+            "label": "Azure subscription",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Select the Azure Resource Manager subscription for the deployment."
+        },
+        {
+            "name": "WebAppName",
+            "type": "pickList",
+            "label": "App Service name",
+            "defaultValue": "",
+            "required": true,
+            "properties": {
+                "EditableOptions": "True"
+            },
+            "helpMarkDown": "Enter or Select the name of an existing Azure App Service."
+        },
+        {
+            "name": "filePath",
+            "type": "string",
+            "label": "File URL",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "the file or directory path after the wwwroot/ of your Azure Web app. paths ending with / are marked as directories"
+        },
+        {
+            "name": "allowUnsafe",
+            "type": "bool",
+            "group" : "Advanced",
+            "label": "Allow Self Signed Certificates",
+            "defaultValue": false,
+            "required": false,
+            "helpMarkDown": "enable this to ignore self signed certification errors"
+        }
+    ],
+    "dataSourceBindings": [
+        {
+            "target": "WebAppName",
+            "endpointId": "$(ConnectedServiceName)",
+            "dataSourceName": "AzureRMWebAppNames"
+        }
+    ],
+    "instanceNameFormat": "Delete file from Azure Web App",
+    "execution": {
+        "PowerShell3": {
+            "target": "$(currentDirectory)\\deleteFile.ps1"
+        }
+    }
+}
