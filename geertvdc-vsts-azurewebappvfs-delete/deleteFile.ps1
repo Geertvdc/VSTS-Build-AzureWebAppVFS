@@ -20,4 +20,4 @@ $resourceGroup = $webapp.ResourceGroup
 
 $login = Get-AzureRmWebAppPublishingCredentials "$resourceGroup" "$WebAppName"
 
-Delete-FileFromWebApp -webAppName "$WebAppName" -username $login.Properties.PublishingUserName -password $login.Properties.PublishingPassword -kuduPath "$filePath"
+Delete-FileFromWebApp -webAppName "$WebAppName" -username $login.Properties.PublishingUserName -password $login.Properties.PublishingPassword -filePath "$filePath" -allowUnsafe $allowUnsafe -alternativeUrl $alternativeKuduUrl

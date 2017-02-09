@@ -13,39 +13,43 @@ function Get-AzureRmWebAppPublishingCredentials($resourceGroupName, $webAppName,
     	return $publishingCredentials
 }
 
-function Get-KuduApiAuthorisationToken($username, $password){
+function Get-KuduApiAuthorisationToken($username, [securestring]$password){
     return ("Basic {0}" -f [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password))))
 }
 
-function Delete-FileFromWebApp($webAppName, $slotName = "", $username, $password, $kuduPath){
+function Delete-FileFromWebApp($webAppName, $slotName = "", $username, [securestring]$password, $filePath, $allowUnsafe = $false, $alternativeUrl){
 
 		Write-Host "user $username"
 		Write-Host "webapp $webAppName"
-		Write-Host "password $password"
-		Write-Host "path $kuduPath"
+		Write-Host "path $filePath"
 
     $kuduApiAuthorisationToken = Get-KuduApiAuthorisationToken $username $password
     if ($slotName -eq ""){
-        $kuduApiUrl = "https://$webAppName.scm.ase.acc.vlkintern.nl/api/vfs/site/wwwroot/$kuduPath"
+        $kuduApiUrl = "https://$webAppName.scm.azurewebsites.net/api/vfs/site/wwwroot/$filePath"
     }
     else{
-        $kuduApiUrl = "https://$webAppName`-$slotName.scm.ase.acc.vlkintern.nl/api/vfs/site/wwwroot/$kuduPath"
+        $kuduApiUrl = "https://$webAppName`-$slotName.scm.azurewebsites.net/api/vfs/site/wwwroot/$filePath"
     }
 
-		Write-Host "url $kuduApiUrl"
+		if($alternativeUrl -ne ""){
+				$kuduApiUrl = $kuduApiUrl.Replace("scm.azurewebsites.net","$alternativeUrl")
+		}
 
-	 add-type @"
-	   using System.Net;
-	   using System.Security.Cryptography.X509Certificates;
-		 public class TrustAllCertsPolicy : ICertificatePolicy {
-		   public bool CheckValidationResult(
-			 ServicePoint srvPoint, X509Certificate certificate,
-			 WebRequest request, int certificateProblem) {
-			   return true;
-			 }
-		 }
+		Write-Host "url $kuduApiUrl"
+    if($allowUnsafe){
+	 		add-type @"
+	   		using System.Net;
+	   		using System.Security.Cryptography.X509Certificates;
+		 		public class TrustAllCertsPolicy : ICertificatePolicy {
+		   		public bool CheckValidationResult(
+			 		ServicePoint srvPoint, X509Certificate certificate,
+			 		WebRequest request, int certificateProblem) {
+			   		return true;
+			 		}
+		 		}
 "@
-		[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+			[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+		}
 
 		Invoke-RestMethod -Uri $kuduApiUrl `
 												-Headers @{"Authorization"=$kuduApiAuthorisationToken;"If-Match"="*"} `
