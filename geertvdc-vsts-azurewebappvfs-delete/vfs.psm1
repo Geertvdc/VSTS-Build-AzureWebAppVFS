@@ -64,7 +64,7 @@ function Get-FileListFromWebApp($webAppName, $slotName = "", $username, $passwor
 
 function Remove-FileFromWebApp($webAppName, $slotName = "", $username, $password, $filePath, $allowUnsafe = $false, $alternativeUrl, $continueIfFileNotExist, $deleteRecursive){
 
-	Write-Output "Remove-FileFromWebApp (user $username ,webapp $webAppName ,path $filePath ,allowunsafe $allowUnsafe ,deleteRecursive $deleteRecursive"
+	Write-Output "Remove-FileFromWebApp path: $filePath"
 	if($deleteRecursive -eq $true -and $filePath.EndsWith("/")){
 		
 		Write-Output "Recursive delete so Get-FileListFromWebApp to see which files to delete: $filePath"
@@ -76,7 +76,7 @@ function Remove-FileFromWebApp($webAppName, $slotName = "", $username, $password
 			Remove-FileFromWebApp -webAppName "$webAppName" -username $username -password $password -filePath "$filename" -allowUnsafe $allowUnsafe -alternativeUrl $alternativeUrl -continueIfFileNotExist $continueIfFileNotExist -deleteRecursive $deleteRecursive
 		}
 
-		Remove-FileFromWebApp -webAppName "$webAppName" -username $username -password $password -filePath "$filename" -allowUnsafe $allowUnsafe -alternativeUrl $alternativeUrl -continueIfFileNotExist $continueIfFileNotExist -deleteRecursive $false
+		Remove-FileFromWebApp -webAppName "$webAppName" -username $username -password $password -filePath "$filePath" -allowUnsafe $allowUnsafe -alternativeUrl $alternativeUrl -continueIfFileNotExist $continueIfFileNotExist -deleteRecursive $false
 
 		return
 	}

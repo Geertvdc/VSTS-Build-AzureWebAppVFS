@@ -27,6 +27,4 @@ Write-Output "Publishing profile retrieved"
 
 $pw = $login.Properties.PublishingPassword
 
-Write-Output "Deleting file from Web App"
 Remove-FileFromWebApp -webAppName "$WebAppName" -username $login.Properties.PublishingUserName -password $pw -filePath "$filePath" -allowUnsafe $allowUnsafe -alternativeUrl $alternativeKuduUrl -continueIfFileNotExist $continueIfFileNotExist -deleteRecursive $deleteRecursive
-Write-Output "File $filePath deleted"
