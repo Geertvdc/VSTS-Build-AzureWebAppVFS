@@ -1,20 +1,30 @@
-# Sitecore Ship VSTS build & release task
+# Azure WebApp Virtual File System Tasks
 
-Ship your Sitecore .Update or .Zip packages to your Sitecore instance using Sitecore Ship
+## Deleting files
+Delete files from Azure Web Apps through KUDU Virtual File System Rest API (Put & Get coming soon)
 
-Sitecore Ship is a lightweight extension to Sitecore to upload packages through http. Sitecore Ship is an opensource project built by Kevin Obee and can be found here:
-[Sitecore Ship on Github](https://github.com/kevinobee/Sitecore.Ship/)
+This task was created because sometimes web apps create certain files containing configuration after initial deployments. This task helps you reset your web app to a certain state wehre resetting the full directory isn't an option (otherwise use Webdeploy's advanced parameter called "Remove Additional Files at Destination")
 
-When you are using Sitecore Ship in your Sitecore instance you can use this build task to upload your packages to your sitecore instance from within your release pipeline by supplying just 2 variables:
- - the .update file
- - your sitecore instance url
+Using the task is easy: fill in the following parameters:
 
+- Azure subscription (select your Azure RM connection)
+- App Service Name (select the web app you want to delete files at)
+- File URL (enter the file url within the wwwroot that you want to delete. use path ending on / for directories)
 
+optionally add the following parameters
 
-![screenshot](https://raw.githubusercontent.com/Geertvdc/VSTS-Build-SitecoreShip/master/geertvdc.vsts.sitecoreship.extension/images/2.png)
+- Recursive delete (Default **ON** if you select a directory also delete all files and directories in this directory)
+- Skip non existing path (If file or directory does not exist any more do not throw error but continue)
+- Allow self signed certificates (**only use this when you you run in an ASE and have your own certificates**)
+- Alternative kudu URL (When running in ASE and the SCM url is different fill in the exact url here)
 
-# Extra links
+![screenshot](https://raw.githubusercontent.com/Geertvdc/VSTS-Build-AzureWebAppVFS/master/geertvdc.vsts.azurewebappvfs.extension/images/2.png)
 
-[Source for this VSTS extension on Github](https://github.com/Geertvdc/VSTS-Build-SitecoreShip)
+## Putting files & Getting files
+Coming soon! (let me know in comments if you need this let me know your requirements)
 
-[My blog](http://mobilefirstcloudfirst.net/2017/01/created-open-source-vsts-build-release-task-sitecore-ship/)
+## Extra links
+
+[Source for this VSTS extension on Github](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)
+
+[My blog](http://mobilefirstcloudfirst.net/)
