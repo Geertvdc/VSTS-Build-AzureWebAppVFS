@@ -3,13 +3,13 @@
     "name": "WebAppVFSDelete",
     "friendlyName": "Delete Item from Azure Web App",
     "description": "Delete Item from Azure Web App through Kudu VFS Rest API",
-    "helpMarkDown": "Version: 0.1. [More Information](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)",
+    "helpMarkDown": "Version: 1.0. [More Information](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)",
     "category": "Utility",
     "author": "Geert van der Cruijsen",
     "version": {
         "Major": 0,
         "Minor": 0,
-        "Patch": 29
+        "Patch": 40
     },
     "visibility": [
       "Build",
@@ -53,10 +53,19 @@
             "helpMarkDown": "the file or directory path after the wwwroot/ of your Azure Web app. paths ending with / are marked as directories"
         },
         {
+            "name": "deleteRecursive",
+            "type": "boolean",
+            "groupName" : "Advanced",
+            "label": "Recursive Delete",
+            "defaultValue": true,
+            "required": false,
+            "helpMarkDown": "delete all subfolders and files in selected directory"
+        },
+        {
             "name": "continueIfFileNotExist",
             "type": "boolean",
             "groupName" : "Advanced",
-            "label": "Continue if file did not exist",
+            "label": "Skip non existing path",
             "defaultValue": true,
             "required": false,
             "helpMarkDown": "If file that is being deleted does not exist on path continue on 404 error?"
