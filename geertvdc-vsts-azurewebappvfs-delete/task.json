@@ -9,7 +9,7 @@
     "version": {
         "Major": 0,
         "Minor": 0,
-        "Patch": 15
+        "Patch": 29
     },
     "visibility": [
       "Build",
@@ -19,9 +19,9 @@
     "minimumAgentVersion": "1.102.0",
     "groups": [
         {
-        "name": "Advanced",
-        "displayName": "Advanced",
-        "isExpanded": false
+            "name": "Advanced",
+            "displayName": "Advanced",
+            "isExpanded": false
         }
     ],
     "inputs": [
@@ -51,6 +51,15 @@
             "defaultValue": "",
             "required": true,
             "helpMarkDown": "the file or directory path after the wwwroot/ of your Azure Web app. paths ending with / are marked as directories"
+        },
+        {
+            "name": "continueIfFileNotExist",
+            "type": "boolean",
+            "groupName" : "Advanced",
+            "label": "Continue if file did not exist",
+            "defaultValue": true,
+            "required": false,
+            "helpMarkDown": "If file that is being deleted does not exist on path continue on 404 error?"
         },
         {
             "name": "allowUnsafe",
