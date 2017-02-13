@@ -9,18 +9,23 @@
     "version": {
         "Major": 0,
         "Minor": 0,
-        "Patch": 4
+        "Patch": 15
     },
     "visibility": [
       "Build",
       "Release"
     ],
-    "demands": [ ],
-    "minimumAgentVersion": "1.90.0",
+    "demands": [ "azureps" ],
+    "minimumAgentVersion": "1.102.0",
     "groups": [
+        {
+        "name": "Advanced",
+        "displayName": "Advanced",
+        "isExpanded": false
+        }
     ],
     "inputs": [
-        {
+  {
             "name": "ConnectedServiceName",
             "type": "connectedService:AzureRM",
             "label": "Azure subscription",
@@ -49,8 +54,8 @@
         },
         {
             "name": "allowUnsafe",
-            "type": "bool",
-            "group" : "Advanced",
+            "type": "boolean",
+            "groupName" : "Advanced",
             "label": "Allow Self Signed Certificates",
             "defaultValue": false,
             "required": false,
@@ -60,10 +65,11 @@
             "name": "alternativeKuduUrl",
             "type": "string",
             "label": "Alternative Kudu URL",
+            "groupName" : "Advanced",
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "value of SCM endpoint if it is not website.scm.azurewebsites.net (fill in only last part starting with scm.)"
-        },
+        }
     ],
     "dataSourceBindings": [
         {
