@@ -2,12 +2,9 @@
   "manifestVersion": 1,
   "id": "GeertvanderCruijsen-Vsts-Release-AzureWebAppVFS",
   "name": "Azure WebApp Virtual File System Tasks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "geertvdcruijsen",
   "public": true,
-  "galleryFlags": [
-      "Preview"
-  ],
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
@@ -43,7 +40,7 @@
   },
   "links": {
     "getstarted": {
-      "uri": "http://mobilefirstcloudfirst.net"
+      "uri": "https://mobilefirstcloudfirst.net/2017/02/created-open-source-vsts-build-release-task-azure-web-app-virtual-file-system/"
     },
     "support": {
       "uri": "https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS"

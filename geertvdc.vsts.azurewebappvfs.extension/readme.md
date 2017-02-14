@@ -27,4 +27,4 @@ Coming soon! (let me know in comments if you need this let me know your requirem
 
 [Source for this VSTS extension on Github](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)
 
-[My blog](http://mobilefirstcloudfirst.net/)
+[My blog](https://mobilefirstcloudfirst.net/2017/02/created-open-source-vsts-build-release-task-azure-web-app-virtual-file-system/)

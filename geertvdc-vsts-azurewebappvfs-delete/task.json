@@ -7,9 +7,9 @@
     "category": "Utility",
     "author": "Geert van der Cruijsen",
     "version": {
-        "Major": 0,
+        "Major": 1,
         "Minor": 0,
-        "Patch": 41
+        "Patch": 0
     },
     "visibility": [
       "Build",
