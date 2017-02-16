@@ -3,11 +3,11 @@
     "name": "WebAppVFSDelete",
     "friendlyName": "Delete Item from Azure Web App",
     "description": "Delete Item from Azure Web App through Kudu VFS Rest API",
-    "helpMarkDown": "Version: 1.0. [More Information](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)",
+    "helpMarkDown": "Version: 2.0. [More Information](https://github.com/Geertvdc/VSTS-Build-AzureWebAppVFS)",
     "category": "Utility",
     "author": "Geert van der Cruijsen",
     "version": {
-        "Major": 1,
+        "Major": 2,
         "Minor": 0,
         "Patch": 0
     },

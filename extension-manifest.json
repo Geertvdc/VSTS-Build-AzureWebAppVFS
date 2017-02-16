@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "GeertvanderCruijsen-Vsts-Release-AzureWebAppVFS",
   "name": "Azure WebApp Virtual File System Tasks",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "publisher": "geertvdcruijsen",
   "public": true,
   "targets": [

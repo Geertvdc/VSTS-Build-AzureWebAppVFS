@@ -30,21 +30,6 @@ function Get-FileListFromWebApp($webAppName, $slotName = "", $username, $passwor
 		$kuduApiUrl = $kuduApiUrl.Replace("scm.azurewebsites.net","$alternativeUrl")
 	}
 
-    if($allowUnsafe -eq $true){
-		add-type @"
-		using System.Net;
-		using System.Security.Cryptography.X509Certificates;
-			public class TrustAllCertsPolicy : ICertificatePolicy {
-			public bool CheckValidationResult(
-				ServicePoint srvPoint, X509Certificate certificate,
-				WebRequest request, int certificateProblem) {
-				return true;
-				}
-			}
-"@
-		[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-	}
-
 	try {
     	$dirList = Invoke-RestMethod -Uri $kuduApiUrl `
 									 -Headers @{"Authorization"=$kuduApiAuthorisationToken;"If-Match"="*"} `
@@ -94,21 +79,6 @@ function Remove-FileFromWebApp($webAppName, $slotName = "", $username, $password
 	}
 
 	Write-Output "url $kuduApiUrl"
-
-    if($allowUnsafe -eq $true){
-	 		add-type @"
-	   		using System.Net;
-	   		using System.Security.Cryptography.X509Certificates;
-		 		public class TrustAllCertsPolicy : ICertificatePolicy {
-		   		public bool CheckValidationResult(
-			 		ServicePoint srvPoint, X509Certificate certificate,
-			 		WebRequest request, int certificateProblem) {
-			   		return true;
-			 		}
-		 		}
-"@
-		[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-	}
 
 	try {
 		Invoke-RestMethod -Uri $kuduApiUrl `
