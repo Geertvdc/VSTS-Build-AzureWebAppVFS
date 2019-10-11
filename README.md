@@ -1,3 +1,5 @@
+> note: this extension is no longer being maintained. You can fork it if you want and publish it yourself if you want.
+
 # Azure WebApp Virtual File System Tasks
 
 ## Deleting files
